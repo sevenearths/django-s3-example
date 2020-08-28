@@ -42,4 +42,8 @@ class MinioFileLoadTest(TestCase):
 
         response = requests.get(file_url)
         self.assertEqual(200, response.status_code)
-        #self.minio_client.remove_object(MINIO_BUCKET, TEST_FILE)
+
+        self.minio_client.remove_object(MINIO_BUCKET, TEST_FILE)
+
+        response = requests.get(file_url)
+        self.assertEqual(404, response.status_code)
