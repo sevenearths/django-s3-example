@@ -1,0 +1,12 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.*.py[cod]
+
+db.sqlite3
+
+django_s3_example/settings.py
+!django_s3_example/settings.py.example
+
+s3/*

@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+
+  app:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000 --insecure
+    volumes:
+      - ./:/code
+    ports:
+      - 8000:8000
+
+  minio:
+    image: minio/minio
+    volumes:
+      - ./s3/data:/data
+    ports:
+      - 9000:9000
+    environment:
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: minio123
+    #command: server http://minio/data
+    command: minio server /data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
