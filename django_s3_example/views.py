@@ -8,7 +8,7 @@ from .settings import MINIO_URL, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, \
                       MINIO_BUCKET, TEST_FILE
 
 
-def file_save_view(request):
+def minio_file_save_view(request):
     try:
         minio_client = Minio(
             MINIO_URL,
@@ -32,7 +32,7 @@ def file_save_view(request):
     file_url = minio_client.presigned_get_object(MINIO_BUCKET, TEST_FILE)
     return JsonResponse({'url': file_url})
 
-def file_load_view(request):
+def minio_file_load_view(request):
     try:
         minio_client = Minio(
             MINIO_URL,

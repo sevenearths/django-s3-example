@@ -1,5 +1,7 @@
 import json
 import requests
+
+from django.urls import reverse
 from django.test import TestCase
 
 from minio import Minio
@@ -9,13 +11,16 @@ from minio.error import BucketAlreadyExists, BucketAlreadyOwnedByYou, \
 from .settings import MINIO_URL, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, \
                       MINIO_BUCKET, TEST_FILE
 
+from django_s3_example.views import minio_file_save_view
+
 
 class MinioFileSaveTest(TestCase):
 
-    url          = '/file/save/'
+    url          = None
     minio_client = None
 
     def setUp(self):
+        self.url = reverse(minio_file_save_view)
         self.minio_client = Minio(
             MINIO_URL,
             access_key=MINIO_ACCESS_KEY,
