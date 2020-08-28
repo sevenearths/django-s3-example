@@ -9,4 +9,4 @@ db.sqlite3
 django_s3_example/settings.py
 !django_s3_example/settings.py.example
 
-s3/*
+minio_data/*

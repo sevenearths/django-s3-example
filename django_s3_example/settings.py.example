@@ -13,6 +13,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MINIO_URL        = 'minio:9000'
+MINIO_ACCESS_KEY = 'minio'
+MINIO_SECRET_KEY = 'minio123'
+MINIO_BUCKET     = 'test-bucket'
+
+AWS_URL          = 's3.amazonaws.com'
+AWS_ACCESS_KEY   = ''
+AWS_SECRET_KEY   = ''
+AWS_BUCKET       = 'test-bucket'
+
+TEST_FILE        = 'test_file.txt'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

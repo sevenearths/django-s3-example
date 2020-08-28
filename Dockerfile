@@ -4,7 +4,11 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /root
 
-RUN apt-get update
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        libxslt-dev \
+        libssl1.0-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /code
 
