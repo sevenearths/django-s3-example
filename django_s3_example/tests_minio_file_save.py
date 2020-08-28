@@ -10,9 +10,9 @@ from .settings import MINIO_URL, MINIO_ACCESS_KEY, MINIO_SECRET_KEY, \
                       MINIO_BUCKET, TEST_FILE
 
 
-class MinioFileLoadTest(TestCase):
+class MinioFileSaveTest(TestCase):
 
-    url          = '/file/load/'
+    url          = '/file/save/'
     minio_client = None
 
     def setUp(self):
@@ -28,9 +28,9 @@ class MinioFileLoadTest(TestCase):
             pass
         except BucketAlreadyOwnedByYou:
             pass
-        self.minio_client.fput_object(MINIO_BUCKET, TEST_FILE, '/code/' + TEST_FILE)
+        self.minio_client.remove_object(MINIO_BUCKET, TEST_FILE)
 
-    def test_get_load_file_in_minio(self):
+    def test_get_save_file_in_minio(self):
         response = self.client.get(self.url)
         self.assertEqual(200, response.status_code)
         json_response = json.loads(response.content)
