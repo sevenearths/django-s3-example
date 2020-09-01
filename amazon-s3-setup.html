@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="ir-site-verification-token" value="-233745807">
+        <title>How to Setup Amazon S3 in a Django Project</title>
+        <meta name="description" content="In this tutorial you will learn how to use the Amazon S3 service to handle static assets and the user uploaded files,that is, the media assets.">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./amazon-s3-setup-files/main.css?v=31">
+    </head>
+
+    <body>
+
+        <div class="container" style="background-color: white; padding: 2em;">
+
+            <div class="row">
+
+                <h4 id="amazon-s3-setup">Amazon S3 Setup</h4>
+
+                <p>Before we get to the Django part, let’s set up the S3 part. We will need to create a user that have access to manage
+                our S3 resources.</p>
+
+                <p>Logged in the AWS web page, find the <strong>IAM</strong> in the list of services, it’s listed under
+                <strong>Security, Identity &amp; Compliance</strong>:</p>
+
+                <p><img src="./amazon-s3-setup-files/iam.jpg" alt="IAM Service" /></p>
+
+                <p>Go to the <strong>Users</strong> tab and click in the <strong>Add user</strong> button:</p>
+
+                <p><img src="./amazon-s3-setup-files/users.jpg" alt="IAM Users Tab" /></p>
+
+                <p>Give a <strong>user name</strong> and select the <strong>programmatic access</strong> option:</p>
+
+                <p><img src="./amazon-s3-setup-files/add-user.jpg" alt="New AWS User" /></p>
+
+                <p>Click <strong>next</strong> to proceed to permissions. At this point we will need to create a new group with the right S3
+                permissions, and add ou`r new user to it. Follow the wizard and click in the <strong>Create group</strong> button:</p>
+
+                <p><img src="./amazon-s3-setup-files/group.jpg" alt="Add User to Group" /></p>
+
+                <p>Define a name for the group and search for the built-in policy <strong>AmazonS3FullAccess</strong>:</p>
+
+                <p><img src="./amazon-s3-setup-files/add-group.jpg" alt="New AWS Group" /></p>
+
+                <p>Click in the <strong>Create group</strong> to finalize the group creation process, in the next screen, the recently created group
+                will show up selected, keep it that way and finally click in the button <strong>Next: Review</strong>:</p>
+
+                <p><img src="./amazon-s3-setup-files/select-group.jpg" alt="Select AWS Group" /></p>
+
+                <p>Review the information, if everything is correct proceed to create the new user. Next, you should see this information:</p>
+
+                <p><img src="./amazon-s3-setup-files/user-success.jpg" alt="New User Created" /></p>
+
+                <p>Take note of all the information: <strong>User</strong>, <strong>Access key ID</strong> and the <strong>Secret access key</strong>. Save them for later.</p>
+
+                <p>Click in the <strong>Close</strong> button and let’s proceed. Now, it’s time to create our very first bucket.</p>
+
+                <p>Bucket is what we call a storage container in S3. We can work with several buckets within the same Django project. But,
+                for the most part you will only need one bucket per website.</p>
+
+                <p>Click in the <strong>Services</strong> menu and search for <strong>S3</strong>. It’s located under <strong>Storage</strong>. If you see the screen below,
+                you are in the right place.</p>
+
+                <p><img src="./amazon-s3-setup-files/s3.jpg" alt="Amazon S3" /></p>
+
+                <p>Click in the <strong>+ Create bucket</strong> to start the flow. Set a DNS-compliant name for your bucket. It will be used to
+                identify your assets. In my case, I choose <strong>sibtc-static</strong>. So the path to my assets will be something like this:
+                <strong>https://sibtc-static.s3.amazonaws.com/static/</strong>.</p>
+
+                <p><img src="./amazon-s3-setup-files/add-bucket.jpg" alt="Create bucket" /></p>
+
+                <p>Leave the remaining of the settings as it is, proceed to the next steps just using the defaults and finally hit the
+                <strong>Create bucket</strong> button. Next you should see the screen below:</p>
+
+                <p><img src="./amazon-s3-setup-files/bucket.jpg" alt="Bucket list" /></p>
+
+                <p>
+                    <em>
+                        (source: <a href="https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html">How to Setup Amazon S3 in a Django Project</a>)
+                    </em>
+                </p>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
