@@ -12,6 +12,12 @@ https://docs.docker.com/compose/install/
 
 ## Setting up
 
+### Aws
+
+[Instructions](amazon-s3-setup.html) on how to setup S3 and IAM for this project
+
+### Local Development
+
 ```
 # python
 >>> import random, string
