@@ -1,3 +1,9 @@
+## Idea
+
+![Alt text](/save_store_retrieve.png?raw=true "Preview")
+
+Best have the files served up by S3. This will free up your app to work on business logic and other things.
+
 ## Installing
 
 ### Docker
@@ -34,6 +40,7 @@ AWS_URL          = 's3.amazonaws.com'
 AWS_ACCESS_KEY   = '...'
 AWS_SECRET_KEY   = '...'
 AWS_BUCKET       = '...'
+AWS_REGION       = '...'
 ...
 # docker-compose up
 ```
