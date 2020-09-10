@@ -22,6 +22,8 @@ https://docs.docker.com/compose/install/
 
 [Instructions](amazon-s3-setup.html) on how to setup S3 and IAM for this project
 
+> Following the above guide should give you a policy similar to [this](https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#iam-policy "IAM policies on AWS")
+
 ### Local Development
 
 ```
@@ -36,13 +38,6 @@ https://docs.docker.com/compose/install/
 ...
 SECRET_KEY = '<secret_key>'
 ...
-AWS_URL          = 's3.amazonaws.com'
-AWS_ACCESS_KEY   = '...'
-AWS_SECRET_KEY   = '...'
-AWS_BUCKET       = '...'
-AWS_REGION       = '...'
-...
-# docker-compose up
 ```
 
 ## Starting up
@@ -54,8 +49,23 @@ AWS_REGION       = '...'
 
 ## Tests
 
-Then in a seperate window run
+Then in a separate window run
+
+### Minio Library
 
 ```
+# docker-compose exec app python manage.py test
+```
+
+### Boto3 Library *(django.core.files.storage.default_storage)*
+
+```
+# vim django_s3_example/settings.py
+...
+AWS_ACCESS_KEY_ID       = '...'
+AWS_SECRET_ACCESS_KEY   = '...'
+AWS_STORAGE_BUCKET_NAME = '...'
+AWS_S3_REGION_NAME      = '...'
+...
 # docker-compose exec app python manage.py test
 ```
